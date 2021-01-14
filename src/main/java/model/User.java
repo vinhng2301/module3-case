@@ -4,23 +4,24 @@ public class User {
     protected int id;
     protected String name;
     protected String email;
-    protected String country;
+    protected String rank;
+    protected String goal;
 
-    public User() {}
+    public User(String name, String email, String rank, String goal) {
 
-    public User(String name, String email, String country) {
-        super();
         this.name = name;
         this.email = email;
-        this.country = country;
+        this.rank = rank;
+        this.goal = goal;
     }
 
-    public User(int id, String name, String email, String country) {
-        super();
+    public User(int id, String name, String email, String rank, String goal) {
+
         this.id = id;
         this.name = name;
         this.email = email;
-        this.country = country;
+        this.rank = rank;
+        this.goal = goal;
     }
 
     public int getId() {
@@ -41,10 +42,17 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getCountry() {
-        return country;
+    public String getRank() {
+        return rank;
     }
-    public void setCountry(String country) {
-        this.country = country;
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getGoal() {
+        return goal;
+    }
+    public void setGoal(String goal) {
+        this.goal = goal;
     }
 }

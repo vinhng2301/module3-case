@@ -15,13 +15,13 @@ public class UserDAO implements IUserDAO{
     private String jdbcUsername = "root";
     private String jdbcPassword = "012130201";
 
-    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country) VALUES " +
-            " (?, ?, ?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, ranking, goal) VALUES " +
+            " (?, ?, ?, ?);";
 
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
-    private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
+    private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, ranking =? , goal =? where id = ?;";
 
     public UserDAO() {
     }
@@ -44,7 +44,8 @@ public class UserDAO implements IUserDAO{
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getCountry());
+            preparedStatement.setString(3, user.getRank());
+            preparedStatement.setString(4, user.getGoal());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -63,8 +64,9 @@ public class UserDAO implements IUserDAO{
             while (rs.next()) {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
-                String country = rs.getString("country");
-                user = new User(id, name, email, country);
+                String rank = rs.getString("ranking");
+                String goal = rs.getString("goal");
+                user = new User(id, name, email, rank, goal);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -85,8 +87,9 @@ public class UserDAO implements IUserDAO{
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
-                String country = rs.getString("country");
-                users.add(new User(id, name, email, country));
+                String rank = rs.getString("ranking");
+                String goal = rs.getString("goal");
+                users.add(new User(id, name, email, rank, goal ));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -108,8 +111,9 @@ public class UserDAO implements IUserDAO{
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
-            statement.setString(3, user.getCountry());
-            statement.setInt(4, user.getId());
+            statement.setString(3, user.getRank());
+            statement.setString(4, user.getGoal());
+            statement.setInt(5, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }

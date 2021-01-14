@@ -3,21 +3,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>User Management Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <title>Boosting Service Management</title>
+    <script src="https://kit.fontawesome.com/9fdc738eaf.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <center>
-    <h1>User Management</h1>
+    <h1>ADD NEW USER</h1>
     <h2>
-        <a href="users?action=users">List All Users</a>
+        <a href="users?action=users" class="btn btn-info">LIST ALL USER</a>
     </h2>
 </center>
-<div align="center">
+<div align="center" class="container">
     <form method="post">
-        <table border="1" cellpadding="5">
-            <caption>
-                <h2>Add New User</h2>
-            </caption>
+        <table class="table table-bordered table-dark">
             <tr>
                 <th>User Name:</th>
                 <td>
@@ -31,14 +33,20 @@
                 </td>
             </tr>
             <tr>
-                <th>Country:</th>
+                <th>Rank:</th>
                 <td>
-                    <input type="text" name="country" id="country" size="15"/>
+                    <input type="text" name="rank" id="rank" size="45"/>
+                </td>
+            </tr>
+            <tr>
+                <th> Rank Goal:</th>
+                <td>
+                    <input type="text" name="goal" id="goal" size="45"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Save"/>
+                    <input type="submit" class="btn btn-info" value="Save"/>
                 </td>
             </tr>
         </table>

@@ -98,8 +98,9 @@ public class UserServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String country = request.getParameter("country");
-        User newUser = new User(name, email, country);
+        String rank = request.getParameter("rank");
+        String goal = request.getParameter("goal");
+        User newUser = new User(name, email, rank, goal);
         userDAO.insertUser(newUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
         dispatcher.forward(request, response);
@@ -110,9 +111,9 @@ public class UserServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String country = request.getParameter("country");
-
-        User book = new User(id, name, email, country);
+        String rank = request.getParameter("rank");
+        String goal = request.getParameter("goal");
+        User book = new User(id, name, email, rank, goal);
         userDAO.updateUser(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         dispatcher.forward(request, response);
